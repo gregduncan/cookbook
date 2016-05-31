@@ -74,14 +74,14 @@ namespace CookBook
             app.UseFileServer();
 
             // this will serve up node_modules
-            //var provider = new PhysicalFileProvider(
-            //    Path.Combine(_applicationPath, "node_modules")
-            //);
-            //var _fileServerOptions = new FileServerOptions();
-            //_fileServerOptions.RequestPath = "/node_modules";
-            //_fileServerOptions.StaticFileOptions.FileProvider = provider;
-            //_fileServerOptions.EnableDirectoryBrowsing = true;
-            //app.UseFileServer(_fileServerOptions);
+            var provider = new PhysicalFileProvider(
+                Path.Combine(_applicationPath, "node_modules")
+            );
+            var _fileServerOptions = new FileServerOptions();
+            _fileServerOptions.RequestPath = "/node_modules";
+            _fileServerOptions.StaticFileOptions.FileProvider = provider;
+            _fileServerOptions.EnableDirectoryBrowsing = true;
+            app.UseFileServer(_fileServerOptions);
 
             app.UseCookieAuthentication(options =>
             {
