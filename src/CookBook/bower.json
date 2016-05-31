@@ -1,0 +1,8 @@
+{
+  "name": "cookbook",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "3.3.6",
+    "components-font-awesome": "4.5.0"
+  }
+}
