@@ -1,5 +1,6 @@
 ﻿var gulp = require('gulp'),
     ts = require('gulp-typescript'),
+    sass = require('gulp-sass'),
     merge = require('merge'),
     fs = require("fs"),
     del = require('del'),
@@ -17,7 +18,9 @@ var paths = {
     jsRxJSVendors: lib + 'js/rxjs',
     cssVendors: lib + 'css',
     imgVendors: lib + 'img',
-    fontsVendors: lib + 'fonts'
+    fontsVendors: lib + 'fonts',
+    scss: "./" + project.webroot + "/css/**/*.scss",
+    scssDist: "./" + project.webroot + "/css/dist",
 };
 
 var tsProject = ts.createProject('./wwwroot/tsconfig.json');
@@ -62,13 +65,23 @@ gulp.task('type', function (done) {
 });
 
 gulp.task('watch.ts', ['type'], function () {
-    return gulp.watch('wwwroot/app/**/*.ts', ['typescript']);
+    return gulp.watch('wwwroot/app/**/*.ts', ['type']);
 });
 
-gulp.task('watch', ['watch.ts']);
+gulp.task('watch.html', ['type'], function () {
+    return gulp.watch('wwwroot/app/**/*.html', ['type']);
+});
+
+gulp.task('watch', ['watch.ts', 'watch.html']);
 
 gulp.task('clean', function () {
     return del([lib]);
+});
+
+gulp.task('sass', function () {
+    return gulp.src(paths.scss)
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest(paths.scssDist));
 });
 
 gulp.task('build', ['vendors', 'type']);

@@ -2,7 +2,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'cookbook',
-    templateUrl: './app/components/home.html'
+    selector: 'home',
+    templateUrl: './app/components/home.html',
+    directives: []
 })
-export class AppComponent { }
+export class Home {
+
+    constructor() {
+
+    }
+}

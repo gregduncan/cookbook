@@ -1,0 +1,11 @@
+@import "http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800";
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,700";
+@import "https://fonts.googleapis.com/css?family=Bree+Serif";
+/*Fonts*/
+/*Colors*/
+body {
+  font: 100% Helvetica, sans-serif;
+  color: #333; }
+
+h1 {
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif; }

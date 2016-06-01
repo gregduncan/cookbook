@@ -1,0 +1,20 @@
+﻿@import "http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800";
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,700";
+@import "https://fonts.googleapis.com/css?family=Bree+Serif";
+
+/*Fonts*/
+$font-stack: Helvetica, sans-serif;
+$font-primary: "Open Sans","Helvetica Neue";
+$font-heading: "Bree Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+/*Colors*/
+$primary-color: #333;
+
+body {
+  font: 100% $font-stack;
+  color: $primary-color;
+}
+
+h1{
+    font-family:$font-heading;
+}
