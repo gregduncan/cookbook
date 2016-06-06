@@ -15,6 +15,7 @@ using Microsoft.AspNet.FileProviders;
 using System.IO;
 using CookBook.Framework;
 using CookBook.Framework.Repos;
+using CookBook.Framework.Services;
 
 namespace CookBook
 {
@@ -42,7 +43,6 @@ namespace CookBook
 
         public IConfigurationRoot Configuration { get; set; }
 
-
         public void ConfigureServices(IServiceCollection services)
         {
             // Add Entity Framework services to the services container.
@@ -56,6 +56,10 @@ namespace CookBook
             services.AddScoped<IStepRepository, StepRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IIngredientRepository, IngredientRepository>();
+
+            // Services
+            services.AddScoped<IMembershipService, MembershipService>();
+            services.AddScoped<IEncryptionService, EncryptionService>();
 
             // Add MVC services to the services container.
             services.AddMvc();

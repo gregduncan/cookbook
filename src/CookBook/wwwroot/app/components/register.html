@@ -1,29 +1,42 @@
 ﻿<h1>Create an account</h1>
-<form #hf="ngForm">
+<p>Alternatively click <a [routerLink]="[routes.login.name]">here</a> to login.</p>
+<div [hidden]="_isSent">
 
-    <div class="form-group">
-        <input class="form-control" type="text" placeholder="Username" [(ngModel)]="_newUser.Username" required #username="ngForm" ngControl="username" />
-        <div [hidden]="username.valid || username.untouched" class="alert alert-danger">
-            Username is required
+    <form #hf="ngForm">
+
+        <div class="form-group">
+            <input class="form-control" type="text" placeholder="Username" [(ngModel)]="_newUser.Username" required #username="ngForm" ngControl="username" />
+            <div [hidden]="username.valid || username.untouched" class="alert alert-danger">
+                Username is required
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <input class="form-control" type="email" placeholder="Email" [(ngModel)]="_newUser.Email" required #email="ngForm" ngControl="email" />
-        <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
-            Email is required
+        <div class="form-group">
+            <input class="form-control" type="email" placeholder="Email" [(ngModel)]="_newUser.Email" required #email="ngForm" ngControl="email" />
+            <div [hidden]="email.valid || email.untouched" class="alert alert-danger">
+                Email is required
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <input class="form-control" type="password" placeholder="Password" [(ngModel)]="_newUser.Password" required #password="ngForm" ngControl="password" />
-        <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
-            Password is required
+        <div class="form-group">
+            <input class="form-control" type="password" placeholder="Password" [(ngModel)]="_newUser.Password" required #password="ngForm" ngControl="password" />
+            <div [hidden]="password.valid || password.untouched" class="alert alert-danger">
+                Password is required
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <button class="btn btn-primary" (click)="submit()" [disabled]="!hf.form.valid">Sign up</button>
-    </div>
+        <div class="form-group">
+            <button class="btn btn-primary" (click)="submit()" [disabled]="!hf.form.valid">Sign up</button>
+        </div>
 
-</form>
+        <div [hidden]="!_isError" class="alert alert-danger">
+            <strong>Error</strong> <span>{{_respMsg}}</span>
+        </div>
+
+    </form>
+</div>
+
+<div [hidden]="!_isSent">
+    <h2>Congratulations! Your account has been created.</h2>
+    <p>Please click <a [routerLink]="[routes.login.name]">here</a> to login.</p>
+</div>

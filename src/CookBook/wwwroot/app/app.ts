@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../node_modules/angular2-in-memory-web-api/typings/browser.d.ts" />
 
-// Library Imports
+// Framework Imports
 import {provide, Component} from '@angular/core';
 import {CORE_DIRECTIVES} from '@angular/common';
 import {bootstrap} from '@angular/platform-browser-dynamic';
@@ -12,6 +12,7 @@ import 'rxjs/Rx';
 
 // Custom Imports
 import { Routes, APP_ROUTES } from './routes';
+import { DataService } from './services/data';
 
 @Component({
     selector: 'cookbook',
@@ -37,8 +38,8 @@ class AppBaseRequestOptions extends BaseRequestOptions {
     })
 }
 
-
 bootstrap(AppRoot, [HTTP_PROVIDERS, ROUTER_PROVIDERS,
     provide(RequestOptions, { useClass: AppBaseRequestOptions }),
-    provide(LocationStrategy, { useClass: HashLocationStrategy })])
+    provide(LocationStrategy, { useClass: HashLocationStrategy }),
+    DataService])
     .catch(err => console.error(err));

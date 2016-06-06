@@ -1,12 +1,13 @@
 ﻿export class User {
     Username: string;
     Password: string;
-    RememberMe: boolean;
+    Email: string;
 
     constructor(username: string,
-        password: string) {
+        password: string,
+        email: string) {
         this.Username = username;
         this.Password = password;
-        this.RememberMe = false;
+        this.Email = email;
     }
 }

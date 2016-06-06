@@ -11,5 +11,10 @@ namespace CookBook.Framework.Repos
         public UserRepository(CookBookContext context)
             : base(context)
         { }
+
+        public User GetSingleByEmail(string email)
+        {
+            return this.GetSingle(x => x.Email == email);
+        }
     }
 }
