@@ -34,6 +34,18 @@ namespace CookBook.Framework
 
                 context.SaveChanges();
             }
+
+            if (!context.Recipes.Any())
+            {
+                context.Recipes.Add(new Recipe()
+                {
+                    CreatedOn = DateTime.Now,
+                    Description = "",
+                    Title = "Endurance Chilli"
+                });
+
+                context.SaveChanges();
+            }
         }
     }
 }

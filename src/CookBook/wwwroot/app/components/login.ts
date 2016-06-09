@@ -45,7 +45,8 @@ export class Login {
             error => console.error('Error: ' + error),
             () => {
                 if (ret.Succeeded) {
-                    this._router.navigate([this.routes.home.name]);
+                    localStorage.setItem('user', JSON.stringify(this._user));
+                    this._router.navigate([this.routes.recipes.name]);
 
                 } else {
                     this._isError = true;
