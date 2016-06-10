@@ -1,1 +1,22 @@
-﻿
+﻿<h1>Recipes</h1>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Created On</th>
+            <th>Recipe</th>
+        </tr>
+    </thead>
+    <tbody  *ngFor="let recipe of _recipes">
+        <tr>
+            <td>
+                {{convertDateTime(recipe.CreatedOn)}}
+            </td>
+            <td>
+                <h3>{{recipe.Title}}</h3>
+                <p>{{recipe.Description}}</p>
+                <a [routerLink]="[routes.recipe.name, {id: recipe.Id}]">View <i class="fa fa-angle-right"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>

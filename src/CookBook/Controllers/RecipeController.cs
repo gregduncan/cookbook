@@ -22,8 +22,8 @@ namespace CookBook.Controllers
             _authorizationService = authorizationService;
         }
 
-        [HttpGet]
         [Authorize]
+        [HttpGet]
         public IActionResult Get()
         {
             List<Recipe> recipes = _recipeRepository
@@ -32,6 +32,14 @@ namespace CookBook.Controllers
                      .ToList();
 
             return new ObjectResult(recipes);
+        }
+
+        [Authorize]
+        [HttpGet("{id:int}")]
+        public IActionResult Get(int id)
+        {
+            Recipe recipe = _recipeRepository.GetSingle(r => r.Id == id, r => r.Ingredients, r => r.Steps);
+            return new ObjectResult(recipe);
         }
     }
 }

@@ -9,6 +9,8 @@ import { Observable } from 'rxjs/Observable';
 // Custom Imports
 import { DataService } from '../services/data';
 import { Routes, APP_ROUTES } from '../routes';
+import { Recipe } from '../models/recipe';
+import { UtilityService } from '../services/utilityService';
 
 @Component({
     selector: 'recipes',
@@ -17,25 +19,27 @@ import { Routes, APP_ROUTES } from '../routes';
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class Recipes {
-    private _recipes: Object;
+    private _recipes: Array<Recipe>;
     private routes = Routes;
     private _router: Router;
 
-    constructor(public http: Http, public api: DataService, router: Router) {
+    constructor(public http: Http, public api: DataService, router: Router, public utilityService: UtilityService) {
         this.routes = Routes;
         this._router = router;
-        //this.bind();
+        this.bind();
     }
 
-    //bind(): void {
+    bind(): void {
+        this.api.get("../api/recipe")
+            .subscribe(res => {
+                this._recipes = res.json();
+            },
+            error => {
+                this.utilityService.navigateToSignIn();
+            });
+    };
 
-    //    this.api.get("../api/recipe")
-    //        .subscribe(res => {
-    //            var data: any = res.json();
-    //            console.log(res);
-    //        },
-    //        error => {
-
-    //        });
-    //};
+    convertDateTime(date: Date) {
+        return this.utilityService.convertDateTime(date);
+    }
 }

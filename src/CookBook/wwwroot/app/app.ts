@@ -13,6 +13,7 @@ import 'rxjs/Rx';
 // Custom Imports
 import { Routes, APP_ROUTES } from './routes';
 import { DataService } from './services/data';
+import { UtilityService } from './services/utilityService';
 
 @Component({
     selector: 'cookbook',
@@ -41,5 +42,5 @@ class AppBaseRequestOptions extends BaseRequestOptions {
 bootstrap(AppRoot, [HTTP_PROVIDERS, ROUTER_PROVIDERS,
     provide(RequestOptions, { useClass: AppBaseRequestOptions }),
     provide(LocationStrategy, { useClass: HashLocationStrategy }),
-    DataService])
+    UtilityService, DataService])
     .catch(err => console.error(err));
