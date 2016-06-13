@@ -10,6 +10,8 @@ import { Observable } from 'rxjs/Observable';
 import { DataService } from '../services/data';
 import { Routes, APP_ROUTES } from '../routes';
 import { Recipe } from '../models/recipe';
+import { Step } from '../models/step';
+import { Ingredient } from '../models/ingredient';
 import { UtilityService } from '../services/utilityService';
 
 @Component({
@@ -20,6 +22,11 @@ import { UtilityService } from '../services/utilityService';
 })
 export class Recipes {
     private _recipes: Array<Recipe>;
+    private _recipe: Recipe;
+    private _steps: Array<Step>;
+    private _step: string;
+    private _ingredients: Array<Ingredient>;
+    private _ingredient: string;
     private routes = Routes;
     private _router: Router;
 
@@ -27,6 +34,11 @@ export class Recipes {
         this.routes = Routes;
         this._router = router;
         this.bind();
+        this._recipe = new Recipe(0, '', '', null);
+        this._ingredients = [];
+        this._ingredient = '';
+        this._steps = [];
+        this._step = '';
     }
 
     bind(): void {
@@ -38,6 +50,34 @@ export class Recipes {
                 this.utilityService.navigateToSignIn();
             });
     };
+
+    addIngredient(): void {
+        this._ingredients.push(new Ingredient(this._ingredients.length, this._ingredient, '', null));
+        this._ingredient = '';
+    }
+
+    removeIngredient(ingredient: Ingredient): void {
+        this._ingredients = this._ingredients.filter(i => i.Id !== ingredient.Id && i.Title !== ingredient.Title);
+    }
+
+    addStep(): void {
+        this._steps.push(new Step(this._steps.length, this._step, '', null));
+        this._step = '';
+    }
+
+    removeStep(step: Step): void {
+        this._steps = this._steps.filter(s => s.Id !== step.Id && s.Title !== step.Title);
+    }
+
+    submit(): void {
+        var data = { Title: this._recipe.Title, Description: this._recipe.Description, Ingredients: this._ingredients, Steps: this._steps };
+        console.log(data);
+        this.api.post("../api/recipe", data)
+            .subscribe(res => {
+                console.log(res);
+            },
+            error => console.error('Error: ' + error));
+    }
 
     convertDateTime(date: Date) {
         return this.utilityService.convertDateTime(date);

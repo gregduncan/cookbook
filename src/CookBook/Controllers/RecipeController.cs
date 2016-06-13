@@ -41,6 +41,14 @@ namespace CookBook.Controllers
             Recipe recipe = _recipeRepository.GetSingle(r => r.Id == id, r => r.Ingredients, r => r.Steps);
             return new ObjectResult(recipe);
         }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Post(Recipe model)
+        {
+            return Ok();
+        }
+
     }
 }
 

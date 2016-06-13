@@ -1,7 +1,7 @@
 ﻿<div class="container">
     <h1>The Cook Book</h1>
     <div class="content">
-        <ul>
+        <ul *ngIf="!isUserAuthenticated()">
             <li>
                 <a [routerLink]="[routes.home.name]">Home</a>
             </li>
@@ -10,6 +10,11 @@
             </li>
             <li>
                 <a [routerLink]="[routes.login.name]">Login</a>
+            </li>
+        </ul>
+        <ul *ngIf="isUserAuthenticated()">
+            <li>
+                <a [routerLink]="[routes.recipes.name]">Recipes</a>
             </li>
         </ul>
         <router-outlet></router-outlet>

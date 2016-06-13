@@ -31,6 +31,14 @@ export class AppRoot {
         this.routes = Routes;
         location.go('/');
     }
+
+    isUserAuthenticated(): boolean {
+        var _user = localStorage.getItem('user');
+        if (_user != null)
+            return true;
+        else
+            return false;
+    }
 }
 
 class AppBaseRequestOptions extends BaseRequestOptions {
