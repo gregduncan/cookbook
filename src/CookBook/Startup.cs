@@ -60,6 +60,7 @@ namespace CookBook
             // Services
             services.AddScoped<IMembershipService, MembershipService>();
             services.AddScoped<IEncryptionService, EncryptionService>();
+            services.AddScoped<IRecipeService, RecipeService>();
 
             // Add MVC services to the services container.
             services.AddMvc();

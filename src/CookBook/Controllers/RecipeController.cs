@@ -7,6 +7,8 @@ using Microsoft.AspNet.Authorization;
 using CookBook.Framework.Repos;
 using CookBook.Models;
 using CookBook.ViewModels;
+using CookBook.Framework;
+using CookBook.Framework.Services;
 
 namespace CookBook.Controllers
 {
@@ -16,10 +18,12 @@ namespace CookBook.Controllers
 
         private readonly IAuthorizationService _authorizationService;
         private IRecipeRepository _recipeRepository;
-        public RecipeController(IRecipeRepository recipeRepository, IAuthorizationService authorizationService)
+        private IRecipeService _recipeService;
+        public RecipeController(IRecipeRepository recipeRepository, IAuthorizationService authorizationService, IRecipeService recipeService)
         {
             _recipeRepository = recipeRepository;
             _authorizationService = authorizationService;
+            _recipeService = recipeService;
         }
 
         [Authorize]
@@ -36,19 +40,22 @@ namespace CookBook.Controllers
 
         [Authorize]
         [HttpGet("{id:int}")]
-        public IActionResult Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            Recipe recipe = _recipeRepository.GetSingle(r => r.Id == id, r => r.Ingredients, r => r.Steps);
-            return new ObjectResult(recipe);
+            return new ObjectResult(await _recipeService.GetById(id));
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Post(Recipe model)
+        public IActionResult Post([FromBody]RecipeViewModel model)
         {
-            return Ok();
+            var ret = _recipeService.Insert(model);
+            if(ret != 0)
+            {
+                return new ObjectResult(new GenericResult() { Succeeded = true, Message = ret.ToString()});
+            }
+            return new ObjectResult(new GenericResult() { Succeeded = false, Message = "Recipe insert failed." });
         }
-
     }
 }
 

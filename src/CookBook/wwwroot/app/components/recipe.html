@@ -1,2 +1,20 @@
 ﻿<h1>{{_title}} <small>{{_createdOn}}</small></h1>
 <p>{{_description}}</p>
+<h1>Ingredients</h1>
+<ul *ngFor="let ingredient of _ingredients">
+    <li>
+        {{ingredient.Title}}
+        <a (click)="removeIngredient(ingredient)">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+    </li>
+</ul>
+<h1>Steps</h1>
+<ul *ngFor="let step of _steps">
+    <li>
+        {{step.Title}}
+        <a (click)="removeStep(step)">
+            <i class="glyphicon glyphicon-remove"></i>
+        </a>
+    </li>
+</ul>

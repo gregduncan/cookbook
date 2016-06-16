@@ -1,4 +1,5 @@
 ﻿using CookBook.Models;
+using CookBook.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,4 +29,11 @@ namespace CookBook.Framework.Services
         User CreateUser(string username, string email, string password);
         User GetUser(int userId);
     }
+
+    public interface IRecipeService
+    {
+        int Insert(RecipeViewModel model);
+        Task<RecipeViewModel> GetById(int id);
+    }
+
 }

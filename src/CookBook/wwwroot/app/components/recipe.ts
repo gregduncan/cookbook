@@ -50,6 +50,7 @@ export class Recipe {
                 this._createdOn = data.CreatedOn;
             },
             error => {
+                console.log(error);
                 this.utilityService.navigateToSignIn();
             });
     };

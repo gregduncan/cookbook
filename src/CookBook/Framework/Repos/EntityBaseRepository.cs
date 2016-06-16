@@ -49,6 +49,7 @@ namespace CookBook.Framework.Repos
             }
             return await query.ToListAsync();
         }
+
         public T GetSingle(int id)
         {
             return _context.Set<T>().FirstOrDefault(x => x.Id == id);
@@ -74,6 +75,23 @@ namespace CookBook.Framework.Repos
         {
             return await _context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
         }
+
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate)
+        {
+            return await _context.Set<T>().FirstOrDefaultAsync(predicate);
+        }
+
+        public async Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties)
+        {
+            IQueryable<T> query = _context.Set<T>();
+            foreach (var includeProperty in includeProperties)
+            {
+                query = query.Include(includeProperty);
+            }
+
+            return await query.Where(predicate).FirstOrDefaultAsync();
+        }
+
         public virtual IEnumerable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
             return _context.Set<T>().Where(predicate);

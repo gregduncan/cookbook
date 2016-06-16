@@ -11,6 +11,7 @@ import { DataService } from '../services/data';
 import { Routes, APP_ROUTES } from '../routes';
 import { Recipe } from '../models/recipe';
 import { Step } from '../models/step';
+import { Operation } from '../models/operation';
 import { Ingredient } from '../models/ingredient';
 import { UtilityService } from '../services/utilityService';
 
@@ -70,13 +71,24 @@ export class Recipes {
     }
 
     submit(): void {
-        var data = { Title: this._recipe.Title, Description: this._recipe.Description, Ingredients: this._ingredients, Steps: this._steps };
-        console.log(data);
+
+        var data = JSON.stringify({ Id: 0, Title: this._recipe.Title, Description: this._recipe.Description, Steps: this._steps, Ingredients: this._ingredients });
+        var recipeResult: Operation = new Operation(false, '');
+
         this.api.post("../api/recipe", data)
             .subscribe(res => {
-                console.log(res);
+                recipeResult.Message = res.Message;
+                recipeResult.Succeeded = res.Succeeded;
             },
-            error => console.error('Error: ' + error));
+            error => console.error('Error: ' + error),
+            () => {
+                if (recipeResult.Succeeded) {
+                    this._router.navigate([this.routes.recipe.name, { id: recipeResult.Message }]);
+                } else {
+                    this.utilityService.navigateToSignIn();
+                }
+            }
+         );
     }
 
     convertDateTime(date: Date) {
