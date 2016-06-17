@@ -72,7 +72,7 @@ gulp.task('watch.html', ['type'], function () {
     return gulp.watch('wwwroot/app/**/*.html', ['type']);
 });
 
-gulp.task('watch', ['watch.ts', 'watch.html']);
+gulp.task('watch', ['watch.ts', 'watch.html', 'sass']);
 
 gulp.task('clean', function () {
     return del([lib]);

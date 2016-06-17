@@ -43,10 +43,9 @@ export class AppRoot {
     }
 
     logout(): void {
-        this.api.post("../api/logout", null, fa)
+        this.api.post("../api/logout", null, false)
         .subscribe(res => {
             localStorage.removeItem('user');
-            this._router.navigate([this.routes.home.path]);
         },
             error => console.error('Error: ' + error),
             () => { });

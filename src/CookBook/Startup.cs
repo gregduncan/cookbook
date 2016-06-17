@@ -105,7 +105,7 @@ namespace CookBook
                 //routes.MapWebApiRoute("DefaultApi", "api/{controller}/{id?}");
             });
 
-            DbInitializer.Initialize(app.ApplicationServices);
+            //DbInitializer.Initialize(app.ApplicationServices);
         }
 
         // Entry point for the application.

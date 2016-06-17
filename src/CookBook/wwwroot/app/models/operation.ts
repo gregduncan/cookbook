@@ -1,4 +1,5 @@
 ﻿export class Operation {
+
     Succeeded: boolean;
     Message: string;
 
