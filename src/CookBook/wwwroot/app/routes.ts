@@ -13,4 +13,4 @@ export var Routes = {
     recipes: new Route({ path: '/recipes', name: 'Recipes', component: Recipes })
 };
 
-export const APP_ROUTES = Object.keys(Routes).map(r => Routes[r]);
+export const APP_ROUTES = Object.keys(Routes).map(r => Routes[r]); 

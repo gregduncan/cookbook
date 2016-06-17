@@ -18,7 +18,7 @@ import { UtilityService } from '../services/utilityService';
 @Component({
     selector: 'recipes',
     providers: [DataService],
-    templateUrl: './app/components/recipes.html',
+    templateUrl: './app/components/recipes.html', 
     directives: [CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES]
 })
 export class Recipes {
@@ -36,10 +36,11 @@ export class Recipes {
         this._router = router;
         this.bind();
         this._recipe = new Recipe(0, '', '', null);
-        this._ingredients = [];
+        this._recipes = [];
         this._ingredient = '';
-        this._steps = [];
+        this._ingredients = [];
         this._step = '';
+        this._steps = [];
     }
 
     bind(): void {

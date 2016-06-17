@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../models/user';
 import { DataService } from '../services/data';
 import { Routes, APP_ROUTES } from '../routes';
+import { Operation } from '../models/operation';
 
 @Component({
     selector: 'register',
@@ -37,20 +38,20 @@ export class Register {
     submit(): void {
 
         var data = JSON.stringify(this._newUser);
-
-        var ret = null;
+        var registerResult: Operation = new Operation(false, '');
 
         this.api.post("../api/register", data)
             .subscribe(res => {
-                ret = res;
+                registerResult.Message = res.Message;
+                registerResult.Succeeded = res.Succeeded;
             },
             error => console.error('Error: ' + error),
             () => {
-                if (ret.Succeeded) {
+                if (registerResult.Succeeded) {
                     this._isSent = true;
                 } else {
                     this._isError = true;
-                    this._respMsg = ret.Message;
+                    this._respMsg = registerResult.Message;
                 }
             });
     };

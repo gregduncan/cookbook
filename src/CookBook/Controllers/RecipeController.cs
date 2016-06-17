@@ -56,6 +56,22 @@ namespace CookBook.Controllers
             }
             return new ObjectResult(new GenericResult() { Succeeded = false, Message = "Recipe insert failed." });
         }
+
+        [HttpDelete("{id:int}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                Recipe recipe = _recipeRepository.GetSingle(id);
+                _recipeRepository.Delete(recipe);
+                _recipeRepository.Commit();
+                return new ObjectResult(new GenericResult() { Succeeded = true, Message = "Recipe delete succeeded." });
+            }
+            catch(Exception ex)
+            {
+                return new ObjectResult(new GenericResult() { Succeeded = false, Message = ex.Message });
+            }
+        }
     }
 }
 

@@ -13,6 +13,8 @@ import { Recipe as RecipeModel} from '../models/recipe';
 import { Step } from '../models/step';
 import { Ingredient } from '../models/ingredient.ts';
 import { UtilityService } from '../services/utilityService';
+import { Operation } from '../models/operation';
+
 @Component({
     selector: 'recipes',
     providers: [DataService],
@@ -53,7 +55,25 @@ export class Recipe {
                 console.log(error);
                 this.utilityService.navigateToSignIn();
             });
-    };
+    }
+
+    delete(): void {
+        var recipeResult: Operation = new Operation(false, '');
+        this.api.delete("../api/recipe/", parseInt(this._recipeId, 10))
+            .subscribe(res => {
+                recipeResult.Message = res.Message;
+                recipeResult.Succeeded = res.Succeeded;
+            },
+            error => console.error('Error: ' + error),
+            () => {
+                if (recipeResult.Succeeded) {
+                    this._router.navigate([this.routes.recipes.name]);
+                } else {
+                    this.utilityService.navigateToSignIn();
+                }
+            }
+        );
+    }
 
     convertDateTime(date: Date) {
         return this.utilityService.convertDateTime(date);

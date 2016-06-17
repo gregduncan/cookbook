@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../models/user';
 import { DataService } from '../services/data';
 import { Routes, APP_ROUTES } from '../routes';
+import { Operation } from '../models/operation';
 
 @Component({
     selector: 'login',
@@ -36,21 +37,22 @@ export class Login {
     submit(): void {
 
         var data = JSON.stringify(this._user);
-        var ret = null;
+        var loginResult: Operation = new Operation(false, '');
 
         this.api.post("../api/login", data)
             .subscribe(res => {
-                ret = res;
+                loginResult.Message = res.Message;
+                loginResult.Succeeded = res.Succeeded;
             },
             error => console.error('Error: ' + error),
             () => {
-                if (ret.Succeeded) {
+                if (loginResult.Succeeded) {
                     localStorage.setItem('user', JSON.stringify(this._user));
                     this._router.navigate([this.routes.recipes.name]);
 
                 } else {
                     this._isError = true;
-                    this._respMsg = ret.Message;
+                    this._respMsg = loginResult.Message;
                 }
             });
     };
