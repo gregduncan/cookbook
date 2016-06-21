@@ -8,13 +8,153 @@ $font-primary: "Open Sans","Helvetica Neue";
 $font-heading: "Bree Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
 
 /*Colors*/
-$primary-color: #333;
+$color-primary: #333;
+$color-red: #F22613;
+$color-white: #fff;
 
-body {
-  font: 100% $font-stack;
-  color: $primary-color;
+/*Extends*/
+.brand {
+    text-transform: uppercase;
+    font-family: $font-heading;
+    letter-spacing: 7px;
 }
 
-h1{
-    font-family:$font-heading;
+/*Globals*/
+body {
+    font: 100% $font-stack;
+    color: $color-primary;
+}
+
+.content {
+    min-height: 500px;
+}
+
+p{
+    font-size:14px;
+}
+
+a{
+    color:$color-primary;
+    font-family:$font-primary;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:disabled,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    font-family: $font-heading;
+    font-size: 18px;
+}
+
+h1 {
+    font-family: $font-heading;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px white inset;
+    box-shadow: 0 0 0px 1000px white inset;
+}
+
+/* Page frames*/
+.frame-top,
+.frame-left,
+.frame-right,
+.frame-bottom {
+    background: $color-primary;
+    position: fixed;
+    z-index: 10000;
+}
+
+.frame-left,
+.frame-right {
+    top: 0;
+    bottom: 0;
+    width: 15px;
+}
+
+.frame-top,
+.frame-bottom {
+    left: 0;
+    right: 0;
+    height: 15px;
+}
+
+.frame-top {
+    top: 0;
+}
+
+.frame-left {
+    left: 0;
+}
+
+.frame-right {
+    right: 0;
+}
+
+.frame-bottom {
+    bottom: 0;
+}
+
+/* Loader */
+.loading {
+    font-family: $font-heading;
+    margin: 100px auto;
+    font-size: 40px;
+    text-align: center;
+    color: $color-primary;
+}
+
+/* Home page landing */
+.hero-cookbook {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+    position: relative;
+    padding: 0;
+    height: 100vh;
+    overflow: hidden;
+    background-image: url('../../images/hero.jpg');
+}
+
+.hero-cookbook .logo {
+    @extend .brand;
+    padding: 15px 0 0 30px;
+    color: $color-white;
+}
+
+.hero-cookbook .logo h1 {
+    font-size: 24px;
+}
+
+.hero-cookbook .logo h1 span {
+    color: $color-red;
+}
+
+/* Nav */
+.navbar-inverse {
+    background-color: $color-primary;
+    border-color: $color-primary;
+    font-size:14px;
+    font-family:$font-primary;
+    letter-spacing:1px;
+}
+
+.navbar-inverse .navbar-brand {
+    @extend .brand;
+    color: $color-white;
+}
+
+.navbar-inverse .navbar-brand > span {
+    color: $color-red;
 }

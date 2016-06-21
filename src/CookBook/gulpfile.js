@@ -64,24 +64,26 @@ gulp.task('type', function (done) {
     return tsResult.js.pipe(gulp.dest(paths.tsOutput));
 });
 
+gulp.task('styles', function () {
+    return gulp.src(paths.scss)
+      .pipe(sass().on('error', sass.logError))
+      .pipe(gulp.dest(paths.scssDist));
+});
+
+gulp.task('css', function () {
+    return gulp.watch('wwwroot/css/**/*.scss', ['styles']);
+})
+
 gulp.task('watch.ts', ['type'], function () {
     return gulp.watch('wwwroot/app/**/*.ts', ['type']);
 });
 
-gulp.task('watch.html', ['type'], function () {
-    return gulp.watch('wwwroot/app/**/*.html', ['type']);
-});
-
-gulp.task('watch', ['watch.ts', 'watch.html', 'sass']);
+gulp.task('watch', ['watch.ts']);
 
 gulp.task('clean', function () {
     return del([lib]);
 });
 
-gulp.task('sass', function () {
-    return gulp.src(paths.scss)
-      .pipe(sass().on('error', sass.logError))
-      .pipe(gulp.dest(paths.scssDist));
-});
+
 
 gulp.task('build', ['vendors', 'type']);

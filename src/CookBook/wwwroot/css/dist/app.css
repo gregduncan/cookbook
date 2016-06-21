@@ -3,9 +3,124 @@
 @import "https://fonts.googleapis.com/css?family=Bree+Serif";
 /*Fonts*/
 /*Colors*/
+/*Extends*/
+.brand, .hero-cookbook .logo, .navbar-inverse .navbar-brand {
+  text-transform: uppercase;
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  letter-spacing: 7px; }
+
+/*Globals*/
 body {
   font: 100% Helvetica, sans-serif;
   color: #333; }
 
+.content {
+  min-height: 500px; }
+
+p {
+  font-size: 14px; }
+
+a {
+  color: #333;
+  font-family: "Open Sans", "Helvetica Neue"; }
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:disabled,
+.btn-primary.disabled:hover,
+.btn-primary[disabled]:hover,
+fieldset[disabled] .btn-primary:hover,
+.btn-primary.disabled:focus,
+.btn-primary[disabled]:focus,
+fieldset[disabled] .btn-primary:focus,
+.btn-primary.disabled.focus,
+.btn-primary[disabled].focus,
+fieldset[disabled] .btn-primary.focus {
+  background-color: #333;
+  border-color: #333;
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px; }
+
 h1 {
   font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset;
+  box-shadow: 0 0 0px 1000px white inset; }
+
+/* Page frames*/
+.frame-top,
+.frame-left,
+.frame-right,
+.frame-bottom {
+  background: #333;
+  position: fixed;
+  z-index: 10000; }
+
+.frame-left,
+.frame-right {
+  top: 0;
+  bottom: 0;
+  width: 15px; }
+
+.frame-top,
+.frame-bottom {
+  left: 0;
+  right: 0;
+  height: 15px; }
+
+.frame-top {
+  top: 0; }
+
+.frame-left {
+  left: 0; }
+
+.frame-right {
+  right: 0; }
+
+.frame-bottom {
+  bottom: 0; }
+
+/* Loader */
+.loading {
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 100px auto;
+  font-size: 40px;
+  text-align: center;
+  color: #333; }
+
+/* Home page landing */
+.hero-cookbook {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  position: relative;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  background-image: url("../../images/hero.jpg"); }
+
+.hero-cookbook .logo {
+  padding: 15px 0 0 30px;
+  color: #fff; }
+
+.hero-cookbook .logo h1 {
+  font-size: 24px; }
+
+.hero-cookbook .logo h1 span {
+  color: #F22613; }
+
+/* Nav */
+.navbar-inverse {
+  background-color: #333;
+  border-color: #333;
+  font-size: 14px;
+  font-family: "Open Sans", "Helvetica Neue";
+  letter-spacing: 1px; }
+
+.navbar-inverse .navbar-brand {
+  color: #fff; }
+
+.navbar-inverse .navbar-brand > span {
+  color: #F22613; }

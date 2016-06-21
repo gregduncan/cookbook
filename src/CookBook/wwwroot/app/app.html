@@ -1,25 +1,51 @@
-﻿<div class="container">
-    <h1>The Cook Book</h1>
-    <div class="content">
-        <ul *ngIf="!isUserAuthenticated()">
-            <li>
-                <a [routerLink]="[routes.home.name]">Home</a>
-            </li>
-            <li>
-                <a [routerLink]="[routes.register.name]">Register</a>
-            </li>
-            <li>
-                <a [routerLink]="[routes.login.name]">Login</a>
-            </li>
-        </ul>
-        <ul *ngIf="isUserAuthenticated()">
-            <li>
-                <a [routerLink]="[routes.recipes.name]">Recipes</a>
-            </li>
-            <li>
-                <a [routerLink]="[routes.home.name]" (click)="logout()">Log out</a>
-            </li>
-        </ul>
+﻿<div class="frame-top"></div>
+<div class="frame-right"></div>
+<div class="frame-bottom"></div>
+<div class="frame-left"></div>
+
+<section class="hero-cookbook">
+    <div class="logo">
+        <h1>the cook <span>book</span></h1>
+    </div>
+</section>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" [routerLink]="[routes.home.name]">the cook <span>book</span></a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul *ngIf="!isUserAuthenticated()" class="nav navbar-nav">
+                <li>
+                    <a [routerLink]="[routes.home.name]">Home</a>
+                </li>
+                <li>
+                    <a [routerLink]="[routes.register.name]">Register</a>
+                </li>
+                <li>
+                    <a [routerLink]="[routes.login.name]">Login</a>
+                </li>
+            </ul>
+            <ul *ngIf="isUserAuthenticated()" class="nav navbar-nav">
+                <li>
+                    <a [routerLink]="[routes.recipes.name]">Recipes</a>
+                </li>
+                <li>
+                    <a [routerLink]="[routes.home.name]" (click)="logout()">Log out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+   
+ <div class="container">
+    <div class="content">            
         <router-outlet></router-outlet>
     </div>
 </div>
