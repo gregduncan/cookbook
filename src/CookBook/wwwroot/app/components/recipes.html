@@ -1,28 +1,21 @@
 ﻿<h1>Recipes</h1>
 
-<table class="table table-bordered table-striped" [hidden]="_recipes.length === 0">
-    <thead>
-        <tr>
-            <th>Created On</th>
-            <th>Recipe</th>
-        </tr>
-    </thead>
-    <tbody  *ngFor="let recipe of _recipes">
-        <tr>
-            <td>
-                {{convertDateTime(recipe.CreatedOn)}}
-            </td>
-            <td>
-                <h3>{{recipe.Title}}</h3>
+<div [hidden]="_recipes.length === 0">
+    <div class="recipes" *ngFor="let recipe of _recipes">
+        <div class="recipe">
+            <div class="recipe-header">
+                <a [routerLink]="[routes.recipe.name, {id: recipe.Id}]">{{recipe.Title}}</a>
+            </div>
+            <div class="recipe-body">
+                <div class="date">Date: {{convertDateTime(recipe.CreatedOn)}}</div>
                 <p>{{recipe.Description}}</p>
-                <a [routerLink]="[routes.recipe.name, {id: recipe.Id}]">View <i class="fa fa-angle-right"></i></a>
-            </td>
-        </tr>
-    </tbody>
-</table>
+            </div>
+        </div>
+    </div>
+</div>
 
 <h3>Create</h3>
-<form #hf="ngForm">
+<form #hf="ngForm" class="form-default">
     <div class="form-group">
 
         <div class="form-group">
@@ -45,8 +38,8 @@
             </span>
         </div>
 
-        <ul *ngFor="let ingredient of _ingredients">
-            <li>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let ingredient of _ingredients">
                 {{ingredient.Title}}
                 <a (click)="removeIngredient(ingredient)">
                     <i class="glyphicon glyphicon-remove"></i>
@@ -61,8 +54,8 @@
             <button class="btn btn-default" type="button" (click)="addStep()">Add</button>
         </div>
 
-        <ul *ngFor="let step of _steps">
-            <li>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let step of _steps">
                 {{step.Title}}
                 <a (click)="removeStep(step)">
                     <i class="glyphicon glyphicon-remove"></i>

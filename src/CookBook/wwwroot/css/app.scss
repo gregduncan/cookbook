@@ -27,6 +27,7 @@ body {
 
 .content {
     min-height: 500px;
+    padding-bottom:100px;
 }
 
 p{
@@ -57,7 +58,11 @@ fieldset[disabled] .btn-primary.focus {
     font-size: 18px;
 }
 
-h1 {
+.btn-default{
+    background:#ddd;
+}
+
+h1, h2, h3, h4, h5 {
     font-family: $font-heading;
 }
 
@@ -157,4 +162,67 @@ input:-webkit-autofill {
 
 .navbar-inverse .navbar-brand > span {
     color: $color-red;
+}
+
+/* Recipes */
+.recipe{
+    border:1px solid #ddd;
+    margin-bottom:10px;
+    border-radius:4px;
+}
+
+.recipe-header{
+    border-bottom:1px solid #ddd;
+    margin-bottom:5px;
+}
+
+.recipe-header a{
+    font-size:22px;
+    line-height:21px;
+    font-family:$font-heading;    
+    padding:8px 10px;
+    display:block;
+}
+
+.recipe-header a:hover{
+    background:#f9f9f9;
+    text-decoration:none;
+}
+
+.recipe-header a,
+.recipe-header a:hover,
+.recipe-header a:visited,
+.recipe-header a:focus{
+    color:$color-primary;
+}
+
+.recipe-body{
+    padding:10px;
+}
+
+.recipe-body .date{
+    font-size:12px;
+    font-family:$font-heading;
+    color:$color-red;
+}
+
+.recipe-body p{
+    margin-bottom:0;
+}
+
+/* Default forms */
+.form-default{
+
+}
+
+.form-default textarea{
+    margin-bottom:10px;
+}
+
+.form-default .list-group{
+    margin-top:10px;
+}
+
+.form-default .list-group-item{
+    font-size:13px;
 }

@@ -26,7 +26,7 @@ namespace CookBook.Controllers
             _recipeService = recipeService;
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet]
         public IActionResult Get()
         {
@@ -38,14 +38,14 @@ namespace CookBook.Controllers
             return new ObjectResult(recipes);
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get(int id)
         {
             return new ObjectResult(await _recipeService.GetById(id));
         }
 
-        //[Authorize]
+        [Authorize]
         [HttpPost]
         public IActionResult Post([FromBody]RecipeViewModel model)
         {

@@ -15,7 +15,8 @@ body {
   color: #333; }
 
 .content {
-  min-height: 500px; }
+  min-height: 500px;
+  padding-bottom: 100px; }
 
 p {
   font-size: 14px; }
@@ -42,7 +43,10 @@ fieldset[disabled] .btn-primary.focus {
   font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 18px; }
 
-h1 {
+.btn-default {
+  background: #ddd; }
+
+h1, h2, h3, h4, h5 {
   font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif; }
 
 input:-webkit-autofill {
@@ -124,3 +128,51 @@ input:-webkit-autofill {
 
 .navbar-inverse .navbar-brand > span {
   color: #F22613; }
+
+/* Recipes */
+.recipe {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  border-radius: 4px; }
+
+.recipe-header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 5px; }
+
+.recipe-header a {
+  font-size: 22px;
+  line-height: 21px;
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  padding: 8px 10px;
+  display: block; }
+
+.recipe-header a:hover {
+  background: #f9f9f9;
+  text-decoration: none; }
+
+.recipe-header a,
+.recipe-header a:hover,
+.recipe-header a:visited,
+.recipe-header a:focus {
+  color: #333; }
+
+.recipe-body {
+  padding: 10px; }
+
+.recipe-body .date {
+  font-size: 12px;
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #F22613; }
+
+.recipe-body p {
+  margin-bottom: 0; }
+
+/* Default forms */
+.form-default textarea {
+  margin-bottom: 10px; }
+
+.form-default .list-group {
+  margin-top: 10px; }
+
+.form-default .list-group-item {
+  font-size: 13px; }

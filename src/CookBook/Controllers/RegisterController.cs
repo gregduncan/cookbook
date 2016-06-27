@@ -28,16 +28,12 @@ namespace CookBook.Controllers
         {
             GenericResult result = null;
 
-            // Only proceed if we were sent a valid model.
             if (ModelState.IsValid)
             {
-                // Check a user doesn't exist with that email.
                 if(_userRepository.GetSingleByEmail(model.Email) == null)
                 {
-                    // Persist user to db.
                     User user = _membershipService.CreateUser(model.Username, model.Email, model.Password);
 
-                    // Respond dependent on outcome of persist.
                     if(user != null)
                     {
                         result = new GenericResult() { Succeeded = true, Message = "Registration succeeded." };

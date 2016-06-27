@@ -30,7 +30,6 @@ namespace CookBook.Controllers
         {
             GenericResult result = null;
 
-            // Only proceed if we were sent a valid model.
             if (ModelState.IsValid)
             {
                 if (_membershipService.ValidateUser(model.Email, model.Password))
