@@ -18,11 +18,10 @@ Angularjs 2 adopts a component based UI, a concept very similar to React. The Co
 
 #### Business Logic Layer
 All data for the UI layer is processed via the API. The BLL has a simple data repository pattern which utilizes ASP.NET Core dependency injection.  The BLL is encapsulated within the Framework folder of the application. Data structures are divided into Models for entities and ViewModels for the API. Key technologies:
-ASP.NET MVC 6
 
++ ASP.NET MVC 6
 + C# 6.0 
 + Web API
-+ Data Access Layer
 
 #### Data Access Layer
 Microsoft's Entity Framework 7 represents the DAL. All repositories derive from the interface IEntityBaseRepository which exposes EF core functionality to the BLL. Key technologies:
