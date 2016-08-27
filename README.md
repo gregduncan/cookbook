@@ -5,7 +5,7 @@ This project followed very closely the design patterns set out in an excellent b
 
 ## Technologies and Architecture
 
-The Cook Book is ASP.NET Core 1.0 application. 
+The Cook Book is an ASP.NET Core 1.0 application. 
 
 #### UI Layer
 Angularjs 2 adopts a component based UI, a concept very similar to React. The Cook Book (TCB) consists of 5 components. Each TCB component in .NET speak represents a page.  Angularjs 2 nicely separates HTML from the component via templates. TCB is written in TypeScript which is standard practice for most Angularjs 2 apps.  Third party libraries are managed via NPM and Bower. JavaScript and CSS transpilation run via Gulp. Key technologies:
